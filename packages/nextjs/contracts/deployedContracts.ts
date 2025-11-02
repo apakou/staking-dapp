@@ -7,7 +7,7 @@ const deployedContracts = {
   devnet: {
     StakingContract: {
       address:
-        "0x4b8a210a93f0ad94d6fe27997c97ec213fecc383e7872c2fe01d713c66b0fd7",
+        "0x64c7ae2365e58c6205d53c07bebbc47b45d3cabc38a21d067dcf0e42672588e",
       abi: [
         {
           type: "impl",
@@ -48,12 +48,49 @@ const deployedContracts = {
               ],
               state_mutability: "external",
             },
+            {
+              type: "function",
+              name: "remove_allowed_token",
+              inputs: [
+                {
+                  name: "token_address",
+                  type: "core::starknet::contract_address::ContractAddress",
+                },
+              ],
+              outputs: [
+                {
+                  type: "core::bool",
+                },
+              ],
+              state_mutability: "external",
+            },
+            {
+              type: "function",
+              name: "set_reward_rate",
+              inputs: [
+                {
+                  name: "rate",
+                  type: "core::integer::u128",
+                },
+              ],
+              outputs: [
+                {
+                  type: "core::bool",
+                },
+              ],
+              state_mutability: "external",
+            },
           ],
         },
         {
           type: "constructor",
           name: "constructor",
-          inputs: [],
+          inputs: [
+            {
+              name: "initial_reward_rate",
+              type: "core::integer::u128",
+            },
+          ],
         },
         {
           type: "event",
@@ -63,7 +100,7 @@ const deployedContracts = {
         },
       ],
       classHash:
-        "0xc1afac9cb89b9d4557e8727711ef321616ebcf82ec295acf59dcbd109b29e1",
+        "0x2a6da08c8c73d52b9e8a2d04ce8359b8790760d35c0dc2b72095c5b61da29c0",
     },
   },
 } as const;

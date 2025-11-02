@@ -49,6 +49,7 @@ const deployScript = async (): Promise<void> => {
     contract: "StakingContract",
     constructorArgs: {
       owner: deployer.address,
+      initial_reward_rate: BigInt(50000000000000000),
     },
   });
 };
