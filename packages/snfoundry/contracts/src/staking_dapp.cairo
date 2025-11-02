@@ -3,6 +3,7 @@ use starknet::ContractAddress;
 #[starknet::interface]
 pub trait IStakingContract<TContractState> {
     fn set_allowed_tokens(ref self: TContractState, token_address: ContractAddress) -> bool;
+    fn remove_allowed_token(ref self: TContractState, token_address: ContractAddress) -> bool;
 }
 
 #[starknet::contract]
@@ -27,6 +28,16 @@ pub mod StakingContract {
         fn set_allowed_tokens(ref self: ContractState, token_address: ContractAddress) -> bool {
             assert!(!token_address.is_zero(), "Token address cannot be zero.");
             self.allowed_tokens.write(token_address, true);
+            true
+        }
+
+        fn remove_allowed_token(ref self: ContractState, token_address: ContractAddress) -> bool {
+            assert!(!token_address.is_zero(), "Token address cannot be zero.");
+
+            let is_allowed = self.allowed_tokens.read(token_address);
+            assert!(is_allowed, "Token address is not in the allowed list.");
+            
+            self.allowed_tokens.write(token_address, false);
             true
         }
     }
