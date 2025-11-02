@@ -46,7 +46,7 @@ import { green, red } from "./helpers/colorize-log";
  */
 const deployScript = async (): Promise<void> => {
   await deployContract({
-    contract: "YourContract",
+    contract: "StakingContract",
     constructorArgs: {
       owner: deployer.address,
     },

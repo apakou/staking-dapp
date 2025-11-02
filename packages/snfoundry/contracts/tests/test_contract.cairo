@@ -1,5 +1,5 @@
-use contracts::your_contract::YourContract::FELT_STRK_CONTRACT;
-use contracts::your_contract::{IYourContractDispatcher, IYourContractDispatcherTrait};
+use contracts::staking_dapp::YourContract::FELT_STRK_CONTRACT;
+use contracts::staking_dapp::{IYourContractDispatcher, IYourContractDispatcherTrait};
 use openzeppelin_testing::declare_and_deploy;
 use openzeppelin_token::erc20::interface::{IERC20Dispatcher, IERC20DispatcherTrait};
 use openzeppelin_utils::serde::SerializedAppend;
